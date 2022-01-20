@@ -99,7 +99,7 @@ async function resolve(type, packageName) {
 
   const fallbackUrl = util.format(config.fallback, packageName);
   const tryUrls = validUrls.concat(fallbackUrl);
-  const reachableUrl = await findReachableUrls(tryUrls, { firstMatch: true });
+  const reachableUrl = await findReachableUrls(tryUrls, { firstMatch: true }) || tryUrls[0];
 
   if (!reachableUrl) {
     log('No URL for package found');
